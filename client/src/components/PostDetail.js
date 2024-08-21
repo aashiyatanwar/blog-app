@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
+const baseURL = process.env.REACT_APP_BACKEND_URL;
 function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/posts/${id}`).then((response) => {
+    axios.get(`${baseURL}posts/${id}`).then((response) => {
       setPost(response.data);
     });
+    
   }, [id]);
 
   if (!post) return <div>Loading...</div>;

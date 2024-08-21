@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
+const baseURL = process.env.REACT_APP_BACKEND_URL;
 function PostList() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/posts').then((response) => {
+    axios.get(`${baseURL}posts`).then((response) => {
       setPosts(response.data);
     });
   }, []);
